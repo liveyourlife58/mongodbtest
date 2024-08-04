@@ -48,19 +48,19 @@ router.post('/api/inputs', (req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.get('/inputs', (req, res) => {
+router.get('/api/inputs', (req, res) => {
   Input.find()
     .then(inputs => res.json(inputs))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.put('/inputs/:id', (req, res) => {
+router.put('/api/inputs/:id', (req, res) => {
   Input.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(input => res.json(input))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.delete('/inputs/:id', (req, res) => {
+router.delete('/api/inputs/:id', (req, res) => {
   Input.findByIdAndDelete(req.params.id)
     .then(() => res.json('Input deleted.'))
     .catch(err => res.status(400).json('Error: ' + err));
