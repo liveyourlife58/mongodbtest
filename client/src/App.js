@@ -19,7 +19,7 @@ function App() {
   const [currentId, setCurrentId] = useState(null);
 
   useEffect(() => {
-    axios.get('https://main--effulgent-sprite-f3fdfa.netlify.app/functions/api/inputs')
+    axios.get('https://main--effulgent-sprite-f3fdfa.netlify.app/.netlify/functions/api/inputs')
       .then(response => setInputs(response.data))
       .catch(error => console.error('There was an error fetching the inputs!', error));
   }, []);
@@ -37,11 +37,9 @@ function App() {
 
     console.log('Form submitted'); // Check if this log appears
     console.log('FormData before update:', formData); // Log formData to inspect it
-    const url = `https://min--effulgent-sprite-f3fdfa.netlify.app/functions/api/inputs/${currentId}`;
-    console.log('Updating with URL:', url);
 
     if (editMode) {
-      axios.put(`https://main--effulgent-sprite-f3fdfa.netlify.app/functions/api/inputs/${currentId}`, formData)
+      axios.put(`https://main--effulgent-sprite-f3fdfa.netlify.app/.netlify/functions/api/inputs/${currentId}`, formData)
         .then(response => {
           console.log('Input updated:', response.data);
           setFormData({
@@ -56,14 +54,14 @@ function App() {
           });
           setEditMode(false);
           setCurrentId(null);
-          return axios.get('https://main--effulgent-sprite-f3fdfa.netlify.app/functions/api/inputs');
+          return axios.get('https://main--effulgent-sprite-f3fdfa.netlify.app/.netlify/functions/api/inputs');
         })
         .then(response => setInputs(response.data))
         .catch(error => {
           console.error('There was an error!', error);
         });
     } else {
-      axios.post('https://main--effulgent-sprite-f3fdfa.netlify.app/functions/api/inputs', formData)
+      axios.post('https://main--effulgent-sprite-f3fdfa.netlify.app/.netlify/functions/api/inputs', formData)
         .then(response => {
           console.log('Input saved:', response.data);
           setFormData({
@@ -76,7 +74,7 @@ function App() {
             co2: false,
             scheduling: ''
           });
-          return axios.get('https://main--effulgent-sprite-f3fdfa.netlify.app/functions/api/inputs');
+          return axios.get('https://main--effulgent-sprite-f3fdfa.netlify.app/.netlify/functions/api/inputs');
         })
         .then(response => setInputs(response.data))
         .catch(error => {
@@ -101,10 +99,10 @@ function App() {
   };
 
   const handleDelete = (id) => {
-    axios.delete(`https://main--effulgent-sprite-f3fdfa.netlify.app/functions/api/inputs/${id}`)
+    axios.delete(`https://main--effulgent-sprite-f3fdfa.netlify.app/.netlify/functions/api/inputs/${id}`)
       .then(() => {
         console.log('Input deleted');
-        return axios.get('https://main--effulgent-sprite-f3fdfa.netlify.app/functions/api/inputs');
+        return axios.get('https://main--effulgent-sprite-f3fdfa.netlify.app/.netlify/functions/api/inputs');
       })
       .then(response => setInputs(response.data))
       .catch(error => {
