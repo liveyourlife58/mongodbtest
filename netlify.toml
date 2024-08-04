@@ -1,6 +1,6 @@
 [build]
   base = "client"
-  functions = "functions"
+  functions = "server/functions"
   publish = "/build"
 
 [[redirects]]
