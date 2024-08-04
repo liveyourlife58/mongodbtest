@@ -31,7 +31,7 @@ const InputSchema = new mongoose.Schema({
 const Input = mongoose.model('Input', InputSchema);
 
 // Define routes using Express methods
-app.post('/api/inputs', (req, res) => {
+router.post('/api/inputs', (req, res) => {
   const newInput = new Input({
     customerName: req.body.customerName,
     notes: req.body.notes,
@@ -48,25 +48,25 @@ app.post('/api/inputs', (req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-app.get('/api/inputs', (req, res) => {
+router.get('/api/inputs', (req, res) => {
   Input.find()
     .then(inputs => res.json(inputs))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-app.put('/api/inputs/:id', (req, res) => {
+router.put('/api/inputs/:id', (req, res) => {
   Input.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(input => res.json(input))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-app.delete('/api/inputs/:id', (req, res) => {
+router.delete('/api/inputs/:id', (req, res) => {
   Input.findByIdAndDelete(req.params.id)
     .then(() => res.json('Input deleted.'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-app.use('/.netlify/functions/api', router);
+router.use('/.netlify/functions/api', router);
 
 module.exports.handler = serverless(app);
 
