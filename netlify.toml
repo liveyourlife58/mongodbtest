@@ -1,7 +1,7 @@
 [build]
   base = "client"
   functions = "server/functions"
-  publish = "/build"
+  publish = "client/build"
 
 [[redirects]]
   from = "/api/*"
