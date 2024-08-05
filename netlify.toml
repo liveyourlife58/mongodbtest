@@ -1,5 +1,4 @@
 [build]
-  base = "/"
   functions = "server/functions"
   publish = "client/build"
 
