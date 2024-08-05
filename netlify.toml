@@ -1,6 +1,6 @@
 [build]
   functions = "server/functions"
-  publish = "client/build"
+  publish = "build"
 
 [[redirects]]
   from = "/api/*"
