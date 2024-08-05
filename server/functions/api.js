@@ -66,7 +66,7 @@ router.delete('/api/inputs/:id', (req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.use('/.netlify/functions/api', router);
+app.use('/.netlify/functions/api', router);
 
 module.exports.handler = serverless(app);
 
