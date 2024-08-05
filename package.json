@@ -8,6 +8,9 @@
     "serverless-http": "^3.2.0"
   },
   "engines": {
-    "node": "14.x"
+    "node": "18.x"
+  },
+  "scripts": {
+    "build": "npm run build"
   }
 }
